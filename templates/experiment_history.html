@@ -1,0 +1,27 @@
+{% extends 'template.html' %}
+
+{% block head %}
+
+
+<title>Train Status</title>
+{% endblock %}
+
+{% block content %}
+
+
+<main class="main-content flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5 w-100">
+    <div class="container-fluid">
+
+         <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="/logs">Logs</a></li>
+            </ol>
+        </nav>
+        {{ context['experiment']|safe }}
+    </div>
+</main>
+
+
+        
+{% endblock %}

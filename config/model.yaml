@@ -1,0 +1,27 @@
+grid_search:
+  class: GridSearchCV
+  module: sklearn.model_selection
+  params:
+    cv: 5
+    verbose: 2
+model_selection:
+  module_3:
+    class: LogisticRegression
+    module: sklearn.linear_model
+    params:
+      penalty:
+      - l2
+    search_param_grid:
+      penalty:
+      - l2
+      - elasticnet
+  module_4:
+    class: SVC
+    module: sklearn.svm
+    params:
+      C:
+      - 2.0
+    search_param_grid:
+      C:
+      - 2.0
+      - 0.5

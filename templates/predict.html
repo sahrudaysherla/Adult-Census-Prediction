@@ -1,0 +1,314 @@
+{% extends 'template.html' %}
+
+{% block head %}
+
+
+<title>Adult Income Classifier</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6 col-sm-12 col-xs-6 col-lg-6">
+
+
+        <form action="/predict" method="post">
+            <legend>Adult Income Classification Form</legend>
+            <div class="mb-3">
+                <label class="form-label">Age</label>
+                <input class="form-control" type="text" name="age" placeholder="Enter a value of age"
+                    required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Workclass</label>
+                <select class="form-control" name="workclass" placeholder="Enter a value of ocean_proximity"
+                    required>
+
+                    <option value="State-gov">
+                        State-gov
+                    </option>
+                    <option value="Self-emp-not-inc">
+                        Self-emp-not-inc
+                    </option>
+                    <option value="Private">
+                        Private
+                    </option>
+                    <option value="Federal-gov">
+                        Federal-gov
+                    </option>
+                    <option value="Local-gov">
+                        Local-gov
+                    </option>
+                    <option value="Self-emp-inc">
+                        Self-emp-inc
+                    </option>
+                    <option value="Self-emp-inc">
+                        Self-emp-inc
+                    </option>
+                    <option value="Never-worked">
+                        Never-worked
+                    </option>
+
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fnlwgt</label>
+                <input class="form-control" type="text" name="fnlwgt" placeholder="Enter a value for fnlwgt" required />
+              </div>
+
+            <div class="mb-3">
+                <label class="form-label">Education</label>
+                <select class="form-control" name="education" placeholder="Select relevent Education"
+                    required>
+
+                    <option value="Preschool">
+                        Preschool
+                    </option>
+                    <option value="1st-4th">
+                        1st-4th
+                    </option><option value="5th-6th">
+                        5th-6th
+                    </option><option value="7th-8th">
+                        7th-8th
+                    </option><option value="9th">
+                        9th
+                    </option><option value="10th">
+                        10th
+                    </option><option value="11th">
+                        11th
+                    </option><option value="12th">
+                        12th
+                    </option><option value="HS-grad">
+                        HS-grad
+                    </option><option value="Some-college">
+                        Some-college
+                    </option><option value="Assoc-voc">
+                        Assoc-voc
+                    </option><option value="Assoc-acdm">
+                        Assoc-acdm
+                    </option>
+                    <option value="Bachelors">
+                        Bachelors
+                    </option>
+                    <option value="Masters">
+                        Masters
+                    </option><option value="Prof-school">
+                        Prof-school
+                    </option>
+                    <option value="Doctorate">
+                        Doctorate
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Education_Number</label>
+                <select class="form-control" name="education_num" placeholder="Enter a value of the above Education in Number"
+                    required>
+
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Marital Status</label>
+                <select class="form-control" name="marital_status" placeholder="Sate the Merital Status"
+                    required>
+                    <option value="Never-married">Never-married</option>
+                    <option value="Married-civ-spouse">Married-civ-spouse</option>
+                    <option value="Divorced">Divorced</option>
+                    <option value="Married-spouse-absent">Married-spouse-absent</option>
+                    <option value="Separated">Separated</option>
+                    <option value="Married-AF-spouse">Married-AF-spouse</option>
+                    <option value="Widowed">Widowed</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Occupation</label>
+                <select class="form-control" name="occupation" placeholder="Enter the Occupation"
+                    required>
+                    <option value="Adm-clerical">Adm-clerical</option>
+                    <option value="Exec-managerial">Exec-managerial</option>
+                    <option value="Handlers-cleaners">Handlers-cleaners</option>
+                    <option value="Prof-specialty">Prof-specialty</option>
+                    <option value="Other-service">Other-service</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Craft-repair">Craft-repair</option>
+                    <option value="Transport-moving">Transport-moving</option>
+                    <option value="Farming-fishing">Farming-fishing</option>
+                    <option value="Machine-op-inspct">Machine-op-inspct</option>
+                    <option value="Tech-support">Tech-support</option>
+                    <option value="Protective-serv">Protective-serv</option>
+                    <option value="Armed-Forces">Armed-Forces</option>
+                    <option value="Priv-house-serv">Priv-house-serv</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Relationship</label>
+                <select class="form-control" name="relationship" placeholder="Relationship"
+                    required>
+                    <option value="Not-in-family">Not-in-family</option>
+                    <option value="Husband">Husband</option>
+                    <option value="Wife">Wife</option>
+                    <option value="Own-child">Own-child</option>
+                    <option value="Unmarried">Unmarried</option>
+                    <option value="Other-relative">Other-relative</option>
+
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Race</label>
+                <select class="form-control" name="race" placeholder="Specify the Race"
+                    required>
+                    <option value="White">White</option>
+                    <option value="Black">Black</option>
+                    <option value="Asian-Pac-Islander">Asian-Pac-Islander</option>
+                    <option value="Amer-Indian-Eskimo">Amer-Indian-Eskimo</option>
+                    <option value="Other">Other</option>
+
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Sex</label>
+                <select class="form-control" name="sex" placeholder="Specify Sex"
+                    required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+
+                </select>
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Capital gain</label>
+                <input class="form-control" type="text" name="capital_gain" placeholder="Enter a value for capital gain" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Capital loss</label>
+                <input class="form-control" type="text" name="capital_loss" placeholder="Enter a value for capital loss" required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Hours per week</label>
+                <input class="form-control" type="text" name="hours_per_week" placeholder="Enter a value for hours per week" required />
+              </div>
+
+            <div class="mb-3">
+                <label class="form-label">Country</label>
+                <select class="form-control" name="country" placeholder="Specify the Country"
+                    required>
+                    <option value="United-States">United-States</option>
+                    <option value="Cuba">Cuba</option>
+                    <option value="Jamaica">Jamaica</option>
+                    <option value="India">India</option>
+                    <option value="nan">nan</option>
+                    <option value="Mexico">Mexico</option>
+                    <option value="South">South</option>
+                    <option value="Puerto-Rico">Puerto-Rico</option>
+                    <option value="Honduras">Honduras</option>
+                    <option value="England">England</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Iran">Iran</option>
+                    <option value="Philippines">Philippines</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Poland">Poland</option>
+                    <option value="Columbia">Columbia</option>
+                    <option value="Cambodia">Cambodia</option>
+                    <option value="Thailand">Thailand</option>
+                    <option value="Ecuador">Ecuador</option>
+                    <option value="Laos">Laos</option>
+                    <option value="Taiwan">Taiwan</option>
+                    <option value="Haiti">Haiti</option>
+                    <option value="Portugal">Portugal</option>
+                    <option value="Dominican-Republic">Dominican-Republic</option>
+                    <option value="El-Salvador">El-Salvador</option>
+                    <option value="France">France</option>
+                    <option value="Guatemala">Guatemala</option>
+                    <option value="China">China</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Yugoslavia">Yugoslavia</option>
+                    <option value="Peru">Peru</option>
+                    <option value="Outlying-US(Guam-USVI-etc)">Outlying-US(Guam-USVI-etc)</option>
+                    <option value="Scotland">Scotland</option>
+                    <option value="Trinadad&Tobago">Trinadad&Tobago</option>
+                    <option value="Greece">Greece</option>
+                    <option value="Nicaragua">Nicaragua</option>
+                    <option value="Vietnam">Vietnam</option>
+                    <option value="Hong">Hong</option>
+                    <option value="Ireland">Ireland</option>
+                    <option value="Hungary">Hungary</option>
+                    <option value="Holand-Netherlands">Holand-Netherlands</option>
+                  </select>
+                  
+
+                </select>
+            </div>
+            
+            <div class="mb-3">
+
+                <input class="btn btn-primary" type="submit" value="Predict Median House Value" required />
+            </div>
+
+        </form>
+    </div>
+
+    <div class="col-md-6 col-sm-12 col-xs-6 col-lg-6">
+        <div class="card">
+            <div class="card-header">
+              California housing price
+            </div>
+            <div class="card-body">
+        {% if context['adult_data'] is not none %}
+        <table class="table table-striped">
+            <caption>Adult Cencus Income Classification </caption>
+            <tr>
+                <th>Input Feature</th>
+                <th>Feature Value</th>
+
+            </tr>
+            {% for column,value in context['adult_data'].items() %}
+
+
+
+            <tr>
+                <td>{{column}}</td>
+                <td>{{value[0]}}</td>
+            </tr>
+
+            {% endfor %}
+            <tr>
+
+                <td>adultIncomeValue </td>
+                <td>
+                    {{ context['adultIncomeValue'] }}
+                </td>
+            </tr>
+        </table>
+
+        {% else %}
+       
+              <h5 class="card-title">Submit Form</h5>
+              <p class="card-text">Kindly provide necessary information to estimate housing price in california</p>
+            
+         
+
+        {% endif %}
+        Go to <a href="/" class="btn btn-primary">Home</a>
+    </div>
+</div>
+    </div>
+
+    {% endblock %}
