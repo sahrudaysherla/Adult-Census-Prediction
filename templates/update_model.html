@@ -1,4 +1,4 @@
-{% extends 'template.html' %}
+{% extends 'index.html' %}
 
 {% block head %}
 
@@ -8,42 +8,52 @@
 
 {% block content %}
 
-<main class="main-content flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5 w-100">
-    <div class="container-fluid">
-
-         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="/logs">Logs</a></li>
-            </ol>
-        </nav>
+<div class="row">
   
-    <div class="col-md-12 " style="margin-bottom:20px;height:500px;overflow:scroll">
+    <div class="col-md-12 " style="margin-bottom:20px;height:500px;overflow:scroll; width: 1000px;">
         <form method="post">
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Existing model config</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"  readonly>
+            <div class="mb-3 p-4">
+                <label for="exampleFormControlTextarea1" class="form-label" style="width: fit-content;"><b>Existing model config: </b></label><br>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" style="width: 900px;" readonly>
                     {{ result['model_config'] }}
 
                 </textarea>
               </div>
         
-              <div class="mb-3">
-              <a href="https://jsonformatter.curiousconcept.com/#" class="btn btn-primary" target="_blank">Validate model config json</a>
+              <div class="mb-3 p-4">
+              <a href="https://jsonformatter.curiousconcept.com/#" class="btn btn-primary" style="border: none;
+              background-color: #4CAF50;
+              color: white;
+              padding: 15px 32px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+              border-radius: 5px;
+              cursor: pointer;" target="_blank">Validate model config json</a>
         </div>
 
-        <div class="mb-3">
-            <input type="submit"  class="btn btn-danger" value="Update model config"/>
-          </div>
-              <div class="mb-3">
-            <label for="exampleFormControlTextarea2" class="form-label">Model Config JSON:</label>
-            <textarea class="form-control" name="new_model_config" id="exampleFormControlTextarea2" rows="10"></textarea>
+        
+              <div class="mb-3 p-4">
+            <label for="exampleFormControlTextarea2" class="form-label"style="width: fit-content;"><b>Model Config JSON:</b></label><br>
+            <textarea class="form-control" name="new_model_config" id="exampleFormControlTextarea2" rows="7" style="width: 900px;"></textarea>
         </div>
+        <div class="mb-3 p-4">
+            <input type="submit"  class="btn btn-primary" value="Update model config" style="border: none;
+            background-color: #ee060a;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;"/>
+          </div>
         
         </form>
     </div>
 </div>
-</main>
 
 
         

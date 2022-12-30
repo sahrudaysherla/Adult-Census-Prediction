@@ -1,25 +1,222 @@
-{% extends 'template.html' %}
+{% extends 'index.html' %}
 
 {% block head %}
 
 
 <title>Adult Income Classifier</title>
+<style>
+    .col-md-6 {
+  width: 50%;
+}
+
+.col-sm-12 {
+  width: 100%;
+}
+
+.col-xs-6 {
+  width: 50%;
+}
+
+.col-lg-6 {
+  width: 50%;
+}
+
+form {
+  width: 100%;
+}
+
+legend {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+label.form-label {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+input.form-control {
+  width: 100%;
+  height: 36px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0 10px;
+  font-size: 14px;
+  outline: none;
+}
+
+select.form-control {
+  width: 100%;
+  height: 36px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0 10px;
+  font-size: 14px;
+  outline: none;
+}
+.custButton {
+    border: none;
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+th {
+  background-color: #4caf50;
+  color: white;
+}
+
+caption {
+  font-size: larger;
+  font-weight: bold;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card-header {
+  background-color: #4caf50;
+  color: white;
+  font-size: larger;
+  font-weight: bold;
+  border-radius: 5px 5px 0 0;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  padding: 10px 16px;
+  background-color: #4caf50;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: #46a049;
+}
+
+
+</style>
+<script>
+    // Get the Education and Education_Number select elements
+    const educationSelect = document.querySelector('select[name="education"]');
+    const educationNumSelect = document.querySelector('select[name="education_num"]');
+  
+    // Add a change event listener to the Education select element
+    educationSelect.addEventListener('change', (event) => {
+      // Get the selected Education value
+      const education = event.target.value;
+  
+      // Set the Education_Number select value based on the selected Education value
+      switch (education) {
+        case 'Preschool':
+          educationNumSelect.value = 1;
+          break;
+        case '1st-4th':
+            educationNumSelect.value = 2;
+            break;
+        case '5th-6th':
+            educationNumSelect.value = 3;
+            break;
+        case '7th-8th':
+            educationNumSelect.value = 4;
+            break;
+        case '9th':
+            educationNumSelect.value = 5;
+            break;
+        case '10th':
+            educationNumSelect.value = 6;
+            break;
+        case '11th':
+            educationNumSelect.value = 7;
+            break;
+        case '12th':
+            educationNumSelect.value = 8;
+            break;
+        case 'HS-grad':
+            educationNumSelect.value = 9;
+            break;
+          
+        case 'Some-college':
+          educationNumSelect.value = 10;
+          break;
+        case 'Assoc-voc':
+            educationNumSelect.value = 11;
+            break;
+        case 'Assoc-acdm':
+          educationNumSelect.value = 12;
+          break;
+        case 'Bachelors':
+          educationNumSelect.value = 13;
+          break;
+        case 'Masters':
+          educationNumSelect.value = 14;
+          break;
+        case 'Prof-school':
+          educationNumSelect.value = 15;
+          break;
+        case 'Doctorate':
+          educationNumSelect.value = 16;
+          break;
+      }
+    });
+  </script>
+  
 {% endblock %}
 
 {% block content %}
-
-<div class="row">
-    <div class="col-md-6 col-sm-12 col-xs-6 col-lg-6">
+<main class="main-content flex-1 mt-12 md:mt-2 pb-24 md:pb-5 w-full mx-auto" style="
+width: 1000px;
+height: auto; 
+background: linear-gradient(120grad, rgb(100, 57, 134), rgb(152, 174, 213));  
+">
+<div class="inline-flex">
+    <div class="col-md-6 col-sm-12 col-xs-6 col-lg-6 p-4">
 
 
         <form action="/predict" method="post">
             <legend>Adult Income Classification Form</legend>
-            <div class="mb-3">
+            <div class="mb-3 p-4">
                 <label class="form-label">Age</label>
                 <input class="form-control" type="text" name="age" placeholder="Enter a value of age"
                     required />
             </div>
-            <div class="mb-3">
+            <div class="mb-3 p-4">
                 <label class="form-label">Workclass</label>
                 <select class="form-control" name="workclass" placeholder="Enter a value of ocean_proximity"
                     required>
@@ -51,12 +248,12 @@
 
                 </select>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 p-4">
                 <label class="form-label">Fnlwgt</label>
                 <input class="form-control" type="text" name="fnlwgt" placeholder="Enter a value for fnlwgt" required />
               </div>
 
-            <div class="mb-3">
+            <div class="mb-3 p-4">
                 <label class="form-label">Education</label>
                 <select class="form-control" name="education" placeholder="Select relevent Education"
                     required>
@@ -100,7 +297,7 @@
                     </option>
                 </select>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 p-4">
                 <label class="form-label">Education_Number</label>
                 <select class="form-control" name="education_num" placeholder="Enter a value of the above Education in Number"
                     required>
@@ -124,7 +321,7 @@
 
                 </select>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 p-4">
                 <label class="form-label">Marital Status</label>
                 <select class="form-control" name="marital_status" placeholder="Sate the Merital Status"
                     required>
@@ -137,7 +334,7 @@
                     <option value="Widowed">Widowed</option>
                 </select>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 p-4">
                 <label class="form-label">Occupation</label>
                 <select class="form-control" name="occupation" placeholder="Enter the Occupation"
                     required>
@@ -157,7 +354,7 @@
                     <option value="Priv-house-serv">Priv-house-serv</option>
                 </select>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 p-4">
                 <label class="form-label">Relationship</label>
                 <select class="form-control" name="relationship" placeholder="Relationship"
                     required>
@@ -170,7 +367,7 @@
 
                 </select>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 p-4">
                 <label class="form-label">Race</label>
                 <select class="form-control" name="race" placeholder="Specify the Race"
                     required>
@@ -182,7 +379,7 @@
 
                 </select>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 p-4">
                 <label class="form-label">Sex</label>
                 <select class="form-control" name="sex" placeholder="Specify Sex"
                     required>
@@ -192,20 +389,20 @@
                 </select>
             </div>
             
-            <div class="mb-3">
+            <div class="mb-3 p-4">
                 <label class="form-label">Capital gain</label>
                 <input class="form-control" type="text" name="capital_gain" placeholder="Enter a value for capital gain" required />
             </div>
-            <div class="mb-3">
+            <div class="mb-3 p-4">
                 <label class="form-label">Capital loss</label>
                 <input class="form-control" type="text" name="capital_loss" placeholder="Enter a value for capital loss" required />
               </div>
-              <div class="mb-3">
+              <div class="mb-3 p-4">
                 <label class="form-label">Hours per week</label>
                 <input class="form-control" type="text" name="hours_per_week" placeholder="Enter a value for hours per week" required />
               </div>
 
-            <div class="mb-3">
+            <div class="mb-3 p-4">
                 <label class="form-label">Country</label>
                 <select class="form-control" name="country" placeholder="Specify the Country"
                     required>
@@ -257,18 +454,18 @@
                 </select>
             </div>
             
-            <div class="mb-3">
+            <div class="mb-3 p-4">
 
-                <input class="btn btn-primary" type="submit" value="Predict Median House Value" required />
+                <input class="custButton" type="submit" value="Predict Median House Value" required />
             </div>
 
         </form>
     </div>
 
-    <div class="col-md-6 col-sm-12 col-xs-6 col-lg-6">
+    <div class="col-md-6 col-sm-12 col-xs-6 col-lg-6 pl-5>
         <div class="card">
             <div class="card-header">
-              California housing price
+              Adult Census Income Classification        
             </div>
             <div class="card-body">
         {% if context['adult_data'] is not none %}
@@ -292,23 +489,33 @@
             <tr>
 
                 <td>adultIncomeValue </td>
+                {% if context['adultIncomeValue'][0] == 0 %}
                 <td>
-                    {{ context['adultIncomeValue'] }}
+                    <b>Income is <=50K</b>
                 </td>
+                {%else%}
+                <td>
+                    <b>Income is >50K</b>
+                </td>
+                {% endif %}
+
             </tr>
         </table>
 
         {% else %}
        
               <h5 class="card-title">Submit Form</h5>
-              <p class="card-text">Kindly provide necessary information to estimate housing price in california</p>
+              <p class="card-text">Kindly provide necessary information to classify the Income</p>
             
          
 
         {% endif %}
+        <br>
         Go to <a href="/" class="btn btn-primary">Home</a>
     </div>
 </div>
     </div>
 
     {% endblock %}
+</div>
+</main>

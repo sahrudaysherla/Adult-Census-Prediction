@@ -82,7 +82,7 @@ def template():
             log_count += len(files)
         for files in os.walk(SAVED_MODELS_DIR_NAME):
             trained_count += len(files)
-        return render_template('template.html',dashboard=True,log_count=log_count, trained_count= trained_count)
+        return render_template('index.html',dashboard=True,log_count=log_count, trained_count= trained_count)
     except Exception as e:
         return str(e)
 
