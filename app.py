@@ -7,7 +7,13 @@ from adult.config.configuration import Configuration
 from adult.constant import CONFIG_DIR
 from adult.util.util import get_current_time_stamp, read_yaml_file, write_yaml_file
 import os, sys
-from flask import Flask, request
+
+from flask import Flask, request, Response
+import io
+import random
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
+
 
 from matplotlib.style import context
 import json 
@@ -69,20 +75,20 @@ def render_artifact_dir(req_path):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     try:
-        return render_template('index.html')
-    except Exception as e:
-        return str(e)
-
-@app.route('/template', methods=['GET', 'POST'])
-def template():
-    try:
         log_count = 0
         trained_count = 0
         for files in os.walk(LOG_FOLDER_NAME):
             log_count += len(files)
         for files in os.walk(SAVED_MODELS_DIR_NAME):
             trained_count += len(files)
-        return render_template('index.html',dashboard=True,log_count=log_count, trained_count= trained_count)
+        return render_template('index.html', dashboard=True, log_count=log_count, trained_count= trained_count)
+    except Exception as e:
+        return str(e)
+
+@app.route('/slider', methods=['GET', 'POST'])
+def slider():
+    try:
+        return render_template('slider.html')
     except Exception as e:
         return str(e)
 
@@ -233,6 +239,8 @@ def render_log_dir(req_path):
         "parent_label": abs_path
     }
     return render_template('log_files.html', result=result)
+
+
 
 
 if __name__ == "__main__":
