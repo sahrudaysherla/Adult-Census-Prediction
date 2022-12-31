@@ -1,6 +1,6 @@
 # Adult Census Income Classifier
 ## This is a Machine Learning Project to classify a person's Income based on the certain input parameters, it is designed to have GUI.
-## Anybody can train this model on their personal preferance to the parameters in the Update Paramatemer section
+## Anybody can train this model on their personal preferance to the parameters in the Update Parameters section
 
 ## This model is trained on the dataset:
 [dataset](https://www.kaggle.com/datasets/uciml/adult-census-income)
