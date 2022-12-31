@@ -1,4 +1,4 @@
-# Adult Census Income Classifier
+# Adult Census Income Prediction
 ## This is a Machine Learning Project to classify a person's Income based on the certain input parameters, it is designed to have GUI.
 ## Anybody can train this model on their personal preferance to the parameters in the Update Parameters section
 
