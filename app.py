@@ -92,6 +92,13 @@ def slider():
     except Exception as e:
         return str(e)
 
+@app.route('/slider2', methods=['GET', 'POST'])
+def slider2():
+    try:
+        return render_template('slider2.html')
+    except Exception as e:
+        return str(e)
+
 @app.route('/view_experiment_hist', methods=['GET', 'POST'])
 def view_experiment_history():
     experiment_df = pipeline.get_experiments_status()

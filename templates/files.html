@@ -8,9 +8,9 @@
 
 {% block content %}
 
-<main class="main-content flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5 w-full mx-auto" style="
+<main class="main-content flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5 w-full mx-auto max-width-1000 style="
 width: 1000px;
-height: 400px;
+height: auto;
 ">
     <div class="flex flex-wrap">
     
@@ -24,7 +24,7 @@ height: 400px;
 
     <div class="inline-flex pl-2">
         {% for href,label in result["files"].items() %}
-        <div class="col-md-2 text-center p-4">
+        <div class="col-md-2 text-center p-4 max-width-1000">
             <a href="/artifact/{{href}}" style="text-decoration: none;">
                 <i class="fa {% if '.' in label %} fa-file {% else %} fa-folder {% endif %} fa-8x" aria-hidden="true"></i> <br>{{ label }}
                 {% if '.' in label %}
