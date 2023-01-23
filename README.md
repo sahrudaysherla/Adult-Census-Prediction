@@ -3,9 +3,30 @@
 ## Anybody can train this model on their personal preferance to the parameters in the Update Parameters section
 
 ## This model is trained on the dataset:
-[dataset](https://www.kaggle.com/datasets/uciml/adult-census-income)
+[Click here for dataset](https://www.kaggle.com/datasets/uciml/adult-census-income)
 
-### Following is the dashboard UI
+### Run the following code in the terminal to install the required files and libraries
+```
+python setup.py install
+```
+```
+pip install -r requirements.txt
+```
+### Tests for Data drift is also performed using [Evidently](https://github.com/evidentlyai/evidently) for each training Iteration. Report for the data drift can be found at the following path of the project:
+
+```
+/workspaces/Adult-Census-Prediction/adult/artifact/data_validation/{latest timestamp of the training Iteration}
+```
+> :warning: Report file for Data Drift will only be generated when you train the model
+
+### Run the following code in terminal to start the server
+``` 
+python app.py 
+```
+### once you start the server the below dashboard will be shown on the server port.
+
+### Following is the dashboard UI, feel free to walk through each and every url.
+#### Model will start training with just the click of the **Let's Train** button
 ![Dashboard](https://github.com/sahrudaysherla/Adult-Census-Prediction/raw/main/showcase/dashboard.png)
 
 ### Here Artifacts of the model can be found for each Iteration or training
